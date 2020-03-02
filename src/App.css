@@ -1,0 +1,38 @@
+body {
+  background: #2193b0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.navclass {
+  background: #2b5876;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.navclass li a{
+  text-decoration: none;
+  
+}
+#hero{
+  min-height: 100vh;
+}
+
+#hero p{
+color: white;
+font-family: 'Simonetta';
+margin-top: 2.5rem;
+font-size: larger;
+}
+
+#banner {
+  background: #e0ae22;
+}
+
+footer {
+  background: #2b5876;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white !important;
+}
