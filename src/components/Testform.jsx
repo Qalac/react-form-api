@@ -43,14 +43,13 @@ export default class TestForm extends React.Component {
             last_name: this.state.last_name,
             reason: this.state.reason
         }
-        const url = '127.0.0.1:8000/users/create'
-        Axios.post('https://abuad-visitors-log.herokuapp.com/users/create', newObject).
+        const Url = 'https://abuad-visitors-log.herokuapp.com/users/create'
+        Axios.post(Url, newObject).
             then(console.log('succesfully created object')).
             catch((err) =>{
                 console.log(err);
             });
-        console.log(newObject);
-    }
+        }
 
     render() {
         return (
