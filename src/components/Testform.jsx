@@ -1,33 +1,76 @@
 import React from 'react';
 import {Button} from '@material-ui/core';
+import Axios from 'axios';
 
-export default function testform() {
-    return (
-        <div>
-            <h2>Abuad Test</h2>
-            <form action="" method="post">
-                <input id="plate_number"type="text" placeholder="plate number" />
-                <br/>
-                <input id="first_name" type="text" placeholder="First name" />
-                <br/>
-                <input id="last_name" type="text" placeholder="Last name" />
-                <br/>
-                <input id="reason" type="text" placeholder="Reason" />
-                <br/>
-                <input id="present" type="boolean" placeholder="Not Present" />
-                <br/>
-                <input id="arrival" type="datetime" placeholder="Arrival" />
-                <br/>
-                <input id="departure" type="datetime" placeholder="Departure" />
-                <br/>
-                <Button variant="outlined">Submit </Button>
+export default class TestForm extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            plate_number: 'plate number',
+            first_name: 'first name',
+            last_name: 'last name',
+            reason: 'reason'
+        }
+
+        this.handlePlate = this.handlePlate.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFirstName = this.handleFirstName.bind(this);
+        this.handleLastName = this.handleLastName.bind(this);
+        this.handleReason = this.handleReason.bind(this);
+    }
 
 
+    handlePlate(event) {
+        this.setState({plate_number: event.target.value})
+    }
 
-            </form>
+    handleFirstName(event) {
+        this.setState({ first_name: event.target.value});
+    }
 
-            <h3>Display Here</h3>
-            <p id="diplay" className="mt-3"></p>
-        </div>
-    )
+    handleLastName(event) {
+        this.setState({ last_name: event.target.value});
+    }
+
+    handleReason (event) {
+        this.setState({ reason: event.target.value});
+    }
+
+    handleSubmit (event) {
+        let newObject = {
+            plate_number: this.state.plate_number.toUpperCase(),
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            reason: this.state.reason
+        }
+        const url = '127.0.0.1:8000/users/create'
+        Axios.post('https://abuad-visitors-log.herokuapp.com/users/create', newObject).
+            then(console.log('succesfully created object')).
+            catch((err) =>{
+                console.log(err);
+            });
+        console.log(newObject);
+    }
+
+    render() {
+        return (
+            <div align="center">
+                <form>
+                    <input id="plate_number" placeholder={this.state.plate_number} type="text" onChange={this.handlePlate} />
+                    <br/>
+                    <input id="first_name" type="text" placeholder={this.state.first_name} onChange={this.handleFirstName} />
+                    <br/>
+                    <input id="last_name" type="text" placeholder={this.state.last_name} onChange={this.handleLastName} />
+                    <br/>
+                    <textarea id="reason" type="text" placeholder={this.state.reason} onChange={this.handleReason} />
+                    <br/>
+                    <Button onClick={this.handleSubmit} variant="outlined">Submit </Button>
+                </form>
+            </div>
+        );
+    }
 }
+
+
+
+
