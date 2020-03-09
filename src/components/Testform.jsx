@@ -37,16 +37,18 @@ export default class TestForm extends React.Component {
     }
 
     handleSubmit (event) {
+        event.preventDefault()
+        
         let newObject = {
             plate_number: this.state.plate_number.toUpperCase(),
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             reason: this.state.reason
         }
-        const Url = 'https://abuad-visitors-log.herokuapp.com/users/create'
-        Axios.post(Url, newObject).
-            then(console.log('succesfully created object')).
-            catch((err) =>{
+        const url = 'https://abuad-visitors-log.herokuapp.com/users/create/'
+        Axios.post(url, newObject)
+            .then(console.log('succesfully created object'))
+            .catch((err) =>{
                 console.log(err);
             });
         }
